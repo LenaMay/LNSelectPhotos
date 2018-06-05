@@ -17,7 +17,7 @@ Pod::Spec.new do |s|
 
   s.name         = "LNSelectPhotos"
   s.version      = "0.0.1"
-  s.summary      = "A short description of LNSelectPhotos."
+  s.summary      = "照片选择"
 
   # This description is used to generate tags and improve search results.
   #   * Think: What does it do? Why did you write it? What is the focus?
@@ -27,7 +27,7 @@ Pod::Spec.new do |s|
   s.description  = <<-DESC
                    DESC
 
-  s.homepage     = "http://EXAMPLE/LNSelectPhotos"
+  s.homepage     = "https://github.com/LenaMay/LNSelectPhotos.git"
   # s.screenshots  = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"
 
 
@@ -38,7 +38,7 @@ Pod::Spec.new do |s|
   #  Popular ones are 'MIT', 'BSD' and 'Apache License, Version 2.0'.
   #
 
-  s.license      = "MIT (example)"
+  s.license      = { :type => "MIT", :file => "LICENSE" }
   # s.license      = { :type => "MIT", :file => "FILE_LICENSE" }
 
 
@@ -70,7 +70,7 @@ Pod::Spec.new do |s|
   # s.ios.deployment_target = "5.0"
   # s.osx.deployment_target = "10.7"
   # s.watchos.deployment_target = "2.0"
-  # s.tvos.deployment_target = "9.0"
+  # s.tvos.deployment_target = "8.0"
 
 
   # ――― Source Location ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
