@@ -1,0 +1,6 @@
+
+platform :ios, '7.0'
+target 'selectPhotos' do
+pod 'SDWebImage'
+pod 'Masonry', '~>1.1.0'
+end
