@@ -31,7 +31,7 @@
     NSMutableArray *albumModelsArray = [NSMutableArray array];
     
     //创建读取哪些相册的subType
-    PHAssetCollectionSubtype subType = PHAssetCollectionSubtypeSmartAlbumVideos|PHAssetCollectionSubtypeSmartAlbumUserLibrary|PHAssetCollectionSubtypeSmartAlbumScreenshots;
+    PHAssetCollectionSubtype subType = PHAssetCollectionSubtypeSmartAlbumVideos|PHAssetCollectionSubtypeSmartAlbumUserLibrary|PHAssetCollectionSubtypeAlbumRegular|PHAssetCollectionSubtypeSmartAlbumGeneric;
     
     //1.获取所有相册的信息PHFetchResult<PHAssetCollection *>
     PHFetchResult *albumsCollection = [PHAssetCollection fetchAssetCollectionsWithType:PHAssetCollectionTypeSmartAlbum subtype:subType options:nil];

@@ -35,6 +35,9 @@
         _currentScroll.showsVerticalScrollIndicator = NO;
         _currentScroll.showsHorizontalScrollIndicator = NO;
         _currentScroll.pagingEnabled = NO;
+        if (@available(iOS 11.0, *)) {
+            _currentScroll.contentInsetAdjustmentBehavior = NO;
+        }
         _currentScroll.contentInsetAdjustmentBehavior = NO;
         [_currentScroll setBackgroundColor:[UIColor clearColor]];
         _currentScroll.maximumZoomScale=3.0;//图片的放大倍数

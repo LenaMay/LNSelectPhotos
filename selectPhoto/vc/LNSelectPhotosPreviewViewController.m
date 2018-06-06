@@ -76,7 +76,9 @@
         _bigImageCollect.pagingEnabled = YES;
         layout.minimumLineSpacing = 0;
         layout.minimumInteritemSpacing = 0;
-        _bigImageCollect.contentInsetAdjustmentBehavior = NO;
+        if (@available(iOS 11.0, *)) {
+            _bigImageCollect.contentInsetAdjustmentBehavior = NO;
+        }
         _bigImageCollect.showsVerticalScrollIndicator = NO;
         _bigImageCollect.showsHorizontalScrollIndicator = NO;
         layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;

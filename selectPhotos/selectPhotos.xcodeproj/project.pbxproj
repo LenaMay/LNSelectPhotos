@@ -225,10 +225,10 @@
 		3EA1945920C7A998005001A2 /* vc */ = {
 			isa = PBXGroup;
 			children = (
-				3EA1945A20C7A998005001A2 /* LNPhotoListViewController.h */,
+				3EA1945D20C7A998005001A2 /* LNSelectPhotosPreviewViewController.h */,
 				3EA1945B20C7A998005001A2 /* LNSelectPhotosPreviewViewController.m */,
 				3EA1945C20C7A998005001A2 /* LNPhotoAlbumListViewController.h */,
-				3EA1945D20C7A998005001A2 /* LNSelectPhotosPreviewViewController.h */,
+				3EA1945A20C7A998005001A2 /* LNPhotoListViewController.h */,
 				3EA1945E20C7A998005001A2 /* LNPhotoListViewController.m */,
 				3EA1945F20C7A998005001A2 /* LNPhotoAlbumListViewController.m */,
 			);
