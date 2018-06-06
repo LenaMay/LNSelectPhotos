@@ -34,6 +34,7 @@
 		3EA1948820C7A998005001A2 /* LNPhotoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA1947120C7A998005001A2 /* LNPhotoManager.m */; };
 		3EA1948920C7A998005001A2 /* LNAlbumInfoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA1947520C7A998005001A2 /* LNAlbumInfoManager.m */; };
 		3EA1948A20C7A998005001A2 /* LNPhotoSelectManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA1947720C7A998005001A2 /* LNPhotoSelectManager.m */; };
+		3EA1948D20C7C8E9005001A2 /* LNPhotoForCamaraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA1948C20C7C8E9005001A2 /* LNPhotoForCamaraViewController.m */; };
 		6D3B03D669F02DB9A8B160AA /* libPods-selectPhotos.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CA53B6FD29C9705BD0D80F20 /* libPods-selectPhotos.a */; };
 /* End PBXBuildFile section */
 
@@ -106,6 +107,8 @@
 		3EA1947520C7A998005001A2 /* LNAlbumInfoManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LNAlbumInfoManager.m; sourceTree = "<group>"; };
 		3EA1947620C7A998005001A2 /* LNSelectPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LNSelectPhoto.h; sourceTree = "<group>"; };
 		3EA1947720C7A998005001A2 /* LNPhotoSelectManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LNPhotoSelectManager.m; sourceTree = "<group>"; };
+		3EA1948B20C7C8E9005001A2 /* LNPhotoForCamaraViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LNPhotoForCamaraViewController.h; sourceTree = "<group>"; };
+		3EA1948C20C7C8E9005001A2 /* LNPhotoForCamaraViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LNPhotoForCamaraViewController.m; sourceTree = "<group>"; };
 		3ECA0F5020BF8FDC005E473D /* selectPhotos copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "selectPhotos copy-Info.plist"; path = "/Users/dxg/SelectPhotos/selectPhotos/selectPhotos copy-Info.plist"; sourceTree = "<absolute>"; };
 		CA53B6FD29C9705BD0D80F20 /* libPods-selectPhotos.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-selectPhotos.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F15468A53650566CB8BAB8BC /* Pods-selectPhotos.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-selectPhotos.release.xcconfig"; path = "Pods/Target Support Files/Pods-selectPhotos/Pods-selectPhotos.release.xcconfig"; sourceTree = "<group>"; };
@@ -231,6 +234,8 @@
 				3EA1945A20C7A998005001A2 /* LNPhotoListViewController.h */,
 				3EA1945E20C7A998005001A2 /* LNPhotoListViewController.m */,
 				3EA1945F20C7A998005001A2 /* LNPhotoAlbumListViewController.m */,
+				3EA1948B20C7C8E9005001A2 /* LNPhotoForCamaraViewController.h */,
+				3EA1948C20C7C8E9005001A2 /* LNPhotoForCamaraViewController.m */,
 			);
 			path = vc;
 			sourceTree = "<group>";
@@ -238,9 +243,9 @@
 		3EA1946020C7A998005001A2 /* model */ = {
 			isa = PBXGroup;
 			children = (
-				3EA1946120C7A998005001A2 /* LNPhotoModel.h */,
 				3EA1946220C7A998005001A2 /* LNAlbumModel.m */,
 				3EA1946320C7A998005001A2 /* LNAlbumModel.h */,
+				3EA1946120C7A998005001A2 /* LNPhotoModel.h */,
 				3EA1946420C7A998005001A2 /* LNPhotoModel.m */,
 			);
 			path = model;
@@ -266,13 +271,13 @@
 		3EA1947020C7A998005001A2 /* helper */ = {
 			isa = PBXGroup;
 			children = (
+				3EA1947420C7A998005001A2 /* LNPhotoManager.h */,
 				3EA1947120C7A998005001A2 /* LNPhotoManager.m */,
 				3EA1947220C7A998005001A2 /* LNAlbumInfoManager.h */,
-				3EA1947320C7A998005001A2 /* LNPhotoSelectManager.h */,
-				3EA1947420C7A998005001A2 /* LNPhotoManager.h */,
 				3EA1947520C7A998005001A2 /* LNAlbumInfoManager.m */,
-				3EA1947620C7A998005001A2 /* LNSelectPhoto.h */,
+				3EA1947320C7A998005001A2 /* LNPhotoSelectManager.h */,
 				3EA1947720C7A998005001A2 /* LNPhotoSelectManager.m */,
+				3EA1947620C7A998005001A2 /* LNSelectPhoto.h */,
 			);
 			path = helper;
 			sourceTree = "<group>";
@@ -456,6 +461,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3EA1948A20C7A998005001A2 /* LNPhotoSelectManager.m in Sources */,
+				3EA1948D20C7C8E9005001A2 /* LNPhotoForCamaraViewController.m in Sources */,
 				3EA1948820C7A998005001A2 /* LNPhotoManager.m in Sources */,
 				3EA1948720C7A998005001A2 /* LNBackBlackView.m in Sources */,
 				3EA1948620C7A998005001A2 /* LNPreViewBottomImageView.m in Sources */,

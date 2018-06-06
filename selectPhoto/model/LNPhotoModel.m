@@ -15,9 +15,11 @@
     
     
     _assetsResult = assetsResult;
+    weakifyself
     [[LNAlbumInfoManager sharedManager] getOriginImageWithAsset:assetsResult completionBlock:^(UIImage *result) {
+        strongifyself
         if(result){
-            _image = result;
+            self.image = result;
         }
     }];
 }

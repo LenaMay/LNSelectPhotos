@@ -32,7 +32,7 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>
-	<string>cameraDesciption</string>
+	<string>此 App 需要您的同意才能使用相机</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>此 App 需要您的同意才能读取媒体资料库</string>
 	<key>UILaunchStoryboardName</key>

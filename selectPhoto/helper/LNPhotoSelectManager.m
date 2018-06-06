@@ -20,13 +20,13 @@
 }
 
 - (void)clear{
-    _albumSelectDic = nil;
     _selectPhotoArray = nil;
     _selectCount = 0;
     _maxCount = 0;
     _isCanEdit = NO;
     _isCanPreView = NO;
     _type = 0;
+
 }
 
 @end

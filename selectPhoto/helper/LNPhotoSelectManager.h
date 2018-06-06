@@ -8,11 +8,10 @@
 
 #import <Foundation/Foundation.h>
 typedef void (^photoArrBlock)(NSArray  *selectPhotoArray);
+typedef void (^photCamaraBlock)(UIImage  *image);
 
 @interface LNPhotoSelectManager : NSObject
 
-//对应的相册里选择的图片 {相册名：选中的照片数组}
-@property (nonatomic, strong) NSDictionary *albumSelectDic;
 
 //数组内为LNPhotoModel对象包含三个参数：photoIdentifier  照片id   photoAsset照片信息    albumIdentifier照片ID
 @property (nonatomic, strong) NSArray  *selectPhotoArray;
@@ -23,6 +22,7 @@ typedef void (^photoArrBlock)(NSArray  *selectPhotoArray);
 @property (nonatomic, assign)BOOL  isCanEdit;
 @property (nonatomic, assign)BOOL  isCanPreView;
 @property (nonatomic, assign)NSInteger  type;
+
 
 @property(nonatomic,copy) photoArrBlock  selectPhotosBlock;
 

@@ -27,10 +27,10 @@
 }
 
 -(void)btnAction{
-    [LNPhotoManager initWithMaxCount:10 type:1 photoArrBlock:^(NSArray *selectPhotoArray) {
+    [LNPhotoManager  selectPhotsWithCount:10 type:2 photoArrBlock:^(NSArray *selectPhotoArray) {
         [self setupView:selectPhotoArray];
     }];
-    
+
 //    LNPhotoAlbumListViewController * vc = [[LNPhotoAlbumListViewController alloc]init];
 //    UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:vc];
 //    [self presentViewController:nav animated:NO completion:^{
