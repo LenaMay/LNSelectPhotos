@@ -253,12 +253,12 @@
 				3EA1946720C7A998005001A2 /* LNPreViewBottomImageView.h */,
 				3EA1946820C7A998005001A2 /* LNPhotoCollectionViewCell.m */,
 				3EA1946920C7A998005001A2 /* LNBackBlackView.h */,
-				3EA1946A20C7A998005001A2 /* LNPreViewPhotosCollectionViewCell.m */,
 				3EA1946B20C7A998005001A2 /* LNPreViewBottomImageView.m */,
 				3EA1946C20C7A998005001A2 /* LNPreViewBottonView.h */,
 				3EA1946D20C7A998005001A2 /* LNPhotoCollectionViewCell.h */,
 				3EA1946E20C7A998005001A2 /* LNBackBlackView.m */,
 				3EA1946F20C7A998005001A2 /* LNPreViewPhotosCollectionViewCell.h */,
+				3EA1946A20C7A998005001A2 /* LNPreViewPhotosCollectionViewCell.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
