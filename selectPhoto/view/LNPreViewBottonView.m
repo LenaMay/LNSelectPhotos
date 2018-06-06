@@ -116,7 +116,7 @@
 //        [self.scrollView addSubview:view];
 //    }
     _scrollView.contentOffset =  CGPointMake(offSizeX,0);
-    [_sureButton setTitle:[NSString stringWithFormat:@"确定 (%ld/%ld)",array.count,[[LNPhotoSelectManager sharedManager] maxCount]] forState:UIControlStateNormal];
+    [_sureButton setTitle:[NSString stringWithFormat:@"确定 (%lu/%lu)",(unsigned long)array.count,[[LNPhotoSelectManager sharedManager] maxCount]] forState:UIControlStateNormal];
     if(array.count>0){
         [_sureButton setEnabled:YES];
     }else{

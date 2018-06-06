@@ -34,16 +34,18 @@
     reques.networkAccessAllowed = NO;
     reques.resizeMode = PHImageRequestOptionsResizeModeExact;
     reques.deliveryMode = PHImageRequestOptionsDeliveryModeOpportunistic;
+    weakifyself
     [[PHImageManager defaultManager] requestImageForAsset:asset targetSize:CGSizeMake(allScreen.width, allScreen.height) contentMode:PHImageContentModeAspectFit options:reques resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
+        strongifyself
         if (result) {
-            _imageView.image = result;
+            self.imageView.image = result;
         }else{
-            _imageView.image = [UIImage imageNamed:@"noimage"];
+            self.imageView.image = [UIImage imageNamed:@"noimage"];
             
         }
-        _imageView.contentMode = UIViewContentModeScaleAspectFit;
-        _imageView.clipsToBounds = YES;
-        _imageView.userInteractionEnabled = YES;
+        self.imageView.contentMode = UIViewContentModeScaleAspectFit;
+        self.imageView.clipsToBounds = YES;
+        self.imageView.userInteractionEnabled = YES;
     }];
 }
 @end

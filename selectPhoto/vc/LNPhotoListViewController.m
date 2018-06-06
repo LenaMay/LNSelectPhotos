@@ -35,7 +35,7 @@
     [super viewWillAppear:animated];
     [self.myCollect reloadData];
     NSArray *photoArr = [[LNPhotoSelectManager sharedManager] selectPhotoArray];
-     [_sureButton setTitle:[NSString stringWithFormat:@"确定 (%ld/%ld)",photoArr.count,[[LNPhotoSelectManager sharedManager] maxCount]] forState:UIControlStateNormal];
+     [_sureButton setTitle:[NSString stringWithFormat:@"确定 (%lu/%lu)",photoArr.count,[[LNPhotoSelectManager sharedManager] maxCount]] forState:UIControlStateNormal];
      [_sureButton setEnabled:photoArr.count>0?YES:NO];
 }
 
@@ -109,7 +109,7 @@
         [_sureButton setEnabled:NO];
         [_sureButton.titleLabel setFont:[UIFont fontWithName:@"PingFangSC-Regular" size:13]];
         [_sureButton addTarget:self action:@selector(sureAction) forControlEvents:UIControlEventTouchUpInside];
-        [_sureButton setTitle:[NSString stringWithFormat:@"确定 (0/%ld)",[[LNPhotoSelectManager sharedManager] maxCount]] forState:UIControlStateNormal];
+        [_sureButton setTitle:[NSString stringWithFormat:@"确定 (0/%lu)",[[LNPhotoSelectManager sharedManager] maxCount]] forState:UIControlStateNormal];
     }
     return _sureButton;
 }
