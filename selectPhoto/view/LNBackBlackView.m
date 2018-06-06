@@ -7,6 +7,8 @@
 //
 
 #import "LNBackBlackView.h"
+#import "LNSelectPhoto.h"
+
 @interface LNBackBlackView()
 
 @end

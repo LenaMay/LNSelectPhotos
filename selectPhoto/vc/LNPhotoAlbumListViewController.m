@@ -10,9 +10,8 @@
 #import "LNAlbumModel.h"
 #import "LNAlbumInfoManager.h"
 #import "LNPhotoListViewController.h"
-
-
-
+#import "LNSelectPhoto.h"
+#import <Masonry/Masonry.h>
 
 @interface LNPhotoAlbumListViewController ()
 @property (nonatomic, strong) UIScrollView  *scrollView;

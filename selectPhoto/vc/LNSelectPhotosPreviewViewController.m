@@ -10,6 +10,8 @@
 #import "LNBackBlackView.h"
 #import "LNPreViewPhotosCollectionViewCell.h"
 #import "LNPreViewBottonView.h"
+#import "LNSelectPhoto.h"
+
 #define viewAll self.view.frame.size
 
 @interface LNSelectPhotosPreviewViewController ()<UIScrollViewDelegate,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,LNPreViewBottonViewDelegate>

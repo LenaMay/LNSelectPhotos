@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "LNSelectPhoto.h"
+#import "LNPhotoModel.h"
 
 
 @interface LNPreViewBottomImageView : UIView

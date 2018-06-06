@@ -7,6 +7,7 @@
 //
 
 #import "LNPhotoModel.h"
+#import "LNSelectPhoto.h"
 
 @implementation LNPhotoModel
 

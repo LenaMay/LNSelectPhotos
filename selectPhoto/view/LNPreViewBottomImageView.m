@@ -7,6 +7,8 @@
 //
 
 #import "LNPreViewBottomImageView.h"
+#import "LNSelectPhoto.h"
+
 @interface LNPreViewBottomImageView()
 @property (nonatomic, strong) UIImageView  *imageView;
 @end

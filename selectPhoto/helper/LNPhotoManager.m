@@ -7,8 +7,8 @@
 //
 
 #import "LNPhotoManager.h"
-#import "LNPhotoSelectManager.h"
 #import "LNPhotoAlbumListViewController.h"
+#import "LNSelectPhoto.h"
 
 @implementation LNPhotoManager
 
@@ -22,7 +22,7 @@
     manager.isCanPreView  = NO;
     manager.isOnly = YES;
     manager.selectPhotosBlock = photoArrBlock;
-    [self loadinfo];
+    [LNPhotoManager loadinfo];
    
 }
 
@@ -48,7 +48,7 @@
 + (void)tiaozhuan{
     LNPhotoAlbumListViewController * vc = [[LNPhotoAlbumListViewController alloc]init];
     UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:vc];
-    [[[[UIApplication sharedApplication] keyWindow] rootViewController] presentViewController:nav animated:YES completion:nil];
+//    [[[[UIApplication sharedApplication] keyWindow] rootViewController] presentViewController:nav animated:YES completion:nil];
 }
 
 

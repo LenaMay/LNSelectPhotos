@@ -10,6 +10,7 @@
 #import "LNPhotoCollectionViewCell.h"
 #import "LNPreViewPhotosCollectionViewCell.h"
 #import "LNSelectPhotosPreviewViewController.h"
+#import "LNSelectPhoto.h"
 
 
 

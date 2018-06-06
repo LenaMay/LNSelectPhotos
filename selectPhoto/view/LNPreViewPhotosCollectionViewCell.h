@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "LNSelectPhoto.h"
 
 @interface LNPreViewPhotosCollectionViewCell : UICollectionViewCell
 @property(nonatomic,strong)UIImageView *imageView;

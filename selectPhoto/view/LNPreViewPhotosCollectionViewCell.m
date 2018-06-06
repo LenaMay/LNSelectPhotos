@@ -7,6 +7,8 @@
 //
 
 #import "LNPreViewPhotosCollectionViewCell.h"
+#import "LNSelectPhoto.h"
+
 #define allScreen [UIScreen mainScreen].bounds.size
 
 @implementation LNPreViewPhotosCollectionViewCell

@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import <Photos/Photos.h>
-#import "LNSelectPhoto.h"
 
 @protocol LNPhotoCollectionViewCellDelegate <NSObject>
 

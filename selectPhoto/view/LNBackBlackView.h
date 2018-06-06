@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "LNSelectPhoto.h"
 
 @interface LNBackBlackView : UIView
 @property (nonatomic, strong) UIScrollView  *currentScroll;

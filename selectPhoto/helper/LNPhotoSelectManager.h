@@ -7,9 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "LNSelectPhoto.h"
-
 typedef void (^photoArrBlock)(NSArray  *selectPhotoArray);
+
 @interface LNPhotoSelectManager : NSObject
 
 //对应的相册里选择的图片 {相册名：选中的照片数组}

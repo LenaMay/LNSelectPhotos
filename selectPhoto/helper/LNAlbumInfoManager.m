@@ -9,7 +9,8 @@
 #import "LNAlbumInfoManager.h"
 #import <Foundation/Foundation.h>
 #import <Photos/Photos.h>
-#import "LNAlbumModel.h"
+#import "LNSelectPhoto.h"
+
 @interface LNAlbumInfoManager ()
 @property (nonatomic, strong) PHCachingImageManager *cacheImageManager;
 @end

@@ -10,7 +10,6 @@
 #define weakifyself __WeakSelf__ wSelf = self;
 #define __StrongSelf__  __strong typeof (self)
 #define strongifyself __StrongSelf__ self = wSelf;
-
 #import <Foundation/Foundation.h>
 #import <Foundation/Foundation.h>
 #import <Photos/Photos.h>

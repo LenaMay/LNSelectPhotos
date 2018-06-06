@@ -8,6 +8,8 @@
 
 #import "LNPreViewBottonView.h"
 #import "LNPreViewBottomImageView.h"
+#import "LNSelectPhoto.h"
+
 @interface LNPreViewBottonView()
 @property (nonatomic, strong) UIScrollView *scrollView;
 @property (nonatomic, strong) UIButton  *sureButton;

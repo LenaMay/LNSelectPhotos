@@ -7,6 +7,7 @@
 //
 
 #import "LNPhotoSelectManager.h"
+#import "LNSelectPhoto.h"
 
 @implementation LNPhotoSelectManager
 + (instancetype)sharedManager{

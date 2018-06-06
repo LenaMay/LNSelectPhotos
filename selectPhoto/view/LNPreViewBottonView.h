@@ -7,8 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "LNSelectPhoto.h"
-
+#import "LNPhotoModel.h"
 @protocol LNPreViewBottonViewDelegate;
 @interface LNPreViewBottonView : UIView
 @property (nonatomic, strong) NSString *photoIdentifier;
