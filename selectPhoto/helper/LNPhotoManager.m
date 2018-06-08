@@ -27,8 +27,8 @@
 + (void)selectPhotsWithCount:(NSInteger )maxCount type:(LNPhotoManagerType)type photoArrBlock:(photoArrBlock)photoArrBlock{
     [[LNPhotoSelectManager sharedManager] clear];
     LNPhotoSelectManager *manager = [LNPhotoSelectManager sharedManager];
-    manager.maxCount = maxCount;
     [manager clear];
+    manager.maxCount = maxCount;
     manager.type = type;
     manager.selectPhotosBlock = photoArrBlock;
     [[LNPhotoManager sharedManager] judgeType:type];
@@ -76,7 +76,10 @@
                     [LNPhotoManager  tiaozhuan];
                 });
             }else{
-                NSLog(@"关闭了权限，需要授权");
+                UIAlertController * alter = [UIAlertController alertControllerWithTitle:@"温馨提示"  message:@"请您设置允许APP访问您的相册->设置->隐私->相册" preferredStyle:UIAlertControllerStyleAlert];
+                UIAlertAction *action1 = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleCancel handler:nil];
+                [alter addAction:action1];
+                [[[[UIApplication sharedApplication] keyWindow] rootViewController] presentViewController:alter animated:YES completion:NULL];
             }
         }];
     }else if ([PHPhotoLibrary authorizationStatus] != PHAuthorizationStatusAuthorized) {

@@ -106,7 +106,7 @@
         [_sureButton setFrame:CGRectMake(self.view.frame.size.width- 100, 7, 90, 30)];
         [_sureButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [_sureButton setTitleColor:[UIColor colorWithRed:255/255.0 green:200/255.0 blue:0/255.0 alpha:1/1.0] forState:UIControlStateDisabled];
-        [_sureButton setEnabled:NO];
+        [_sureButton setEnabled:YES];
         [_sureButton.titleLabel setFont:[UIFont fontWithName:@"PingFangSC-Regular" size:13]];
         [_sureButton addTarget:self action:@selector(sureAction) forControlEvents:UIControlEventTouchUpInside];
         [_sureButton setTitle:[NSString stringWithFormat:@"确定 (0/%lu)",[[LNPhotoSelectManager sharedManager] maxCount]] forState:UIControlStateNormal];
@@ -218,7 +218,10 @@
             sender.selected = YES;
             [[LNPhotoSelectManager sharedManager] setSelectPhotoArray:photoArr];
         }else{
-            NSLog(@"不能选了");
+            UIAlertController * alter = [UIAlertController alertControllerWithTitle:@"温馨提示"  message:@"照片选够了吆，不能再选了^_^" preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *action1 = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleCancel handler:nil];
+            [alter addAction:action1];
+            [self presentViewController:alter animated:YES completion:NULL];
         }
     }
     
