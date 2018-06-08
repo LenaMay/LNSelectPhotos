@@ -11,5 +11,4 @@
 
 @interface LNPhotoAlbumListViewController : UIViewController
 @property (nonatomic, assign)BOOL  isOnly;
-
 @end
