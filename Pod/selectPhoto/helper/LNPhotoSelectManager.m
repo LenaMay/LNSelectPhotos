@@ -29,4 +29,16 @@
 
 }
 
+- (LNPhotoModel *)modelWithPhotoIdentifier:(NSString *)photoIdentifier{
+    LNPhotoModel *model = nil;
+    NSArray *array = self.selectPhotoArray;
+    for (int i = 0; i<array.count; i++) {
+        LNPhotoModel *pmodel = array[i];
+        if ([pmodel.photoIdentifier isEqualToString:photoIdentifier]) {
+            model = pmodel;
+        }
+    }
+    return  model;
+}
+
 @end

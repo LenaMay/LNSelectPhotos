@@ -11,6 +11,8 @@
 #import "LNPreViewPhotosCollectionViewCell.h"
 #import "LNPreViewBottonView.h"
 #import "LNSelectPhoto.h"
+#import "LNClipsViewController.h"
+#import "MBProgressHUD.h"
 
 #define viewAll self.view.frame.size
 
@@ -18,11 +20,21 @@
 @property (nonatomic, strong)UICollectionView *bigImageCollect;
 @property (nonatomic, strong)LNBackBlackView  *blackBackView;
 
+//多选显示
 @property (nonatomic, strong)UIView  *headerView;
 @property (nonatomic, strong) UIButton *selectBtn;
-
 @property (nonatomic, strong)LNPreViewBottonView  *bottomView;
+
+
+//单选显示
+@property (nonatomic, strong)UIView  *onlyBottomView;
+
+
+
 @property (nonatomic, assign) CGFloat currentX;
+@property (nonatomic, assign) BOOL isCanEdit;
+@property (nonatomic, assign) BOOL isonly;
+
 
 
 
@@ -37,11 +49,20 @@
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.navigationController.navigationBar.hidden = YES;
     _currentItem=_currentItem>0?_currentItem:0;
-    
+    _isCanEdit = [[LNPhotoSelectManager sharedManager] isCanEdit];
+    _isonly = [[LNPhotoSelectManager sharedManager] isOnly];
+
     [self.view addSubview:self.bigImageCollect];
     [self.bigImageCollect addSubview:self.blackBackView];
     [self.view addSubview:self.headerView];
     [self.view addSubview:self.bottomView];
+    [self.view addSubview:self.onlyBottomView];
+    
+    //单选操作
+    [self.headerView setHidden:_isonly];
+    [self.bottomView setHidden:_isonly];
+    [self.onlyBottomView setHidden:!_isonly];
+    
     [self updateSelectStatus];
 
 
@@ -54,12 +75,13 @@
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
     self.navigationController.navigationBar.hidden = NO;
-
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     self.navigationController.navigationBar.hidden = YES;
+    [self updateblackBackViewInfo];
 
 }
 
@@ -82,7 +104,7 @@
         _bigImageCollect.showsVerticalScrollIndicator = NO;
         _bigImageCollect.showsHorizontalScrollIndicator = NO;
         layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
-        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(pressBlackBtn)];
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(backTapAction)];
         [_bigImageCollect addGestureRecognizer:tap];
         if(_currentItem>=0){
             [_bigImageCollect setContentOffset:CGPointMake(self.view.frame.size.width *_currentItem, 0)];
@@ -98,7 +120,7 @@
         _blackBackView = [[LNBackBlackView alloc]initWithFrame:CGRectMake(self.view.frame.size.width * _currentItem, 0, self.view.frame.size.width, self.view.frame.size.height)];
         //透明按钮
         UIButton *backClearBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
-        [backClearBtn addTarget:self action:@selector(pressBlackBtn) forControlEvents:UIControlEventTouchUpInside];
+        [backClearBtn addTarget:self action:@selector(backTapAction) forControlEvents:UIControlEventTouchUpInside];
         backClearBtn.backgroundColor = [UIColor clearColor];
         [_blackBackView.currentScroll addSubview:backClearBtn];
         _blackBackView.currentScroll.delegate = self;
@@ -139,24 +161,45 @@
     return _bottomView;
 }
 
-#pragma mark - helper
+- (UIView *)onlyBottomView{
+    if(!_onlyBottomView){
+        _onlyBottomView = [[UIView alloc]initWithFrame:CGRectMake(0, self.view.frame.size.height -105, self.view.frame.size.width, 105)];
+        [_onlyBottomView setBackgroundColor:[UIColor clearColor]];
+        [_onlyBottomView setHidden:YES];
+        UIButton *returnBtn  = [UIButton buttonWithType:UIButtonTypeCustom];
+        [returnBtn setImage:[UIImage imageNamed:@"LN_ic_photo_return"] forState:UIControlStateNormal];
+        [returnBtn setFrame:CGRectMake(60, 0, 60, 60)];
+        [returnBtn addTarget:self action:@selector(pressBack) forControlEvents:UIControlEventTouchUpInside];
+        [_onlyBottomView addSubview:returnBtn];
+        
+        UIButton *sureBtn  = [UIButton buttonWithType:UIButtonTypeCustom];
+        [sureBtn setImage:[UIImage imageNamed:@"LN_ic_photo_correct"] forState:UIControlStateNormal];
+        [sureBtn setFrame:CGRectMake(self.view.frame.size.width -60 - 60, 0, 60, 60)];
+        [sureBtn addTarget:self action:@selector(onlySelectAction) forControlEvents:UIControlEventTouchUpInside];
+        [_onlyBottomView addSubview:sureBtn];
+    }
+    return _onlyBottomView;
+}
+
+#pragma mark - helper and Action
 
 - (void)updateSelectStatus{
     
     BOOL isSelect = NO;
-    NSArray *array = [[LNPhotoSelectManager sharedManager] selectPhotoArray];
     PHAssetCollection *assetCollection =  (PHAssetCollection *)self.model.assetsResult[_currentItem];
-    for (int i = 0; i < [array count]; i++) {
-        if ([[array[i] photoIdentifier] isEqualToString:assetCollection.localIdentifier]) {
-            isSelect = YES;
-        }
+    LNPhotoModel *model = [[LNPhotoSelectManager sharedManager] modelWithPhotoIdentifier:assetCollection.localIdentifier];
+    if (model) {
+        isSelect = YES;
     }
     [self.selectBtn setSelected:isSelect];
     [self.bottomView setPhotoIdentifier:assetCollection.localIdentifier];
     
 }
 
-- (void)pressBlackBtn{
+- (void)backTapAction{
+    if(_isonly){
+        return;
+    }
     if (_headerView.hidden == YES) {
         _headerView.hidden = NO;
         if ([[[LNPhotoSelectManager sharedManager] selectPhotoArray] count]>0) {
@@ -177,15 +220,13 @@
     int curr = self.blackBackView.frame.origin.x / viewAll.width;
     NSArray *array = [[LNPhotoSelectManager sharedManager] selectPhotoArray];
     NSInteger max  = [[LNPhotoSelectManager sharedManager] maxCount];
-    
     NSMutableArray *photoArr = [NSMutableArray arrayWithArray:array];
     PHAssetCollection *assetCollection =  (PHAssetCollection *)self.model.assetsResult[curr];
     if (sender.selected == YES) {
-        for (int i = 0; i < [photoArr count]; i++) {
-            if ([[photoArr[i] photoIdentifier] isEqualToString:assetCollection.localIdentifier]) {
-                [photoArr removeObjectAtIndex:i];
-                sender.selected = NO;
-            }
+        LNPhotoModel *model = [[LNPhotoSelectManager sharedManager] modelWithPhotoIdentifier:assetCollection.localIdentifier];
+        if (model) {
+            [photoArr removeObject:model];
+            sender.selected = NO;
         }
         [[LNPhotoSelectManager sharedManager] setSelectPhotoArray:photoArr];
     }else{
@@ -211,14 +252,51 @@
     }
 }
 
--(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
-    if ([scrollView isEqual:_bigImageCollect]) {
-        _currentX = scrollView.contentOffset.x;
-        _currentItem = scrollView.contentOffset.x / viewAll.width;
-        self.blackBackView.frame = CGRectMake(scrollView.contentOffset.x,scrollView.frame.origin.y,scrollView.frame.size.width,scrollView.frame.size.height);
-        self.blackBackView.currentScroll.zoomScale = 1.0;
+//照片选择完成处理
+- (void)sureAction{
+    NSArray *array = [LNPhotoSelectManager sharedManager].selectPhotoArray;
+    NSMutableArray *imageArray = [NSMutableArray array];
+    for (int i = 0; i<array.count; i++) {
+        LNPhotoModel *model = array[i];
+        if (model.image) {
+            [imageArray addObject:model.image];
+        }
+    }
+    if ([LNPhotoSelectManager sharedManager].selectPhotosBlock) {
+        [LNPhotoSelectManager sharedManager].selectPhotosBlock(imageArray);
+    }
+    
+    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+}
+
+//单选选中
+- (void)onlySelectAction{
+
+    int curr = self.blackBackView.frame.origin.x / viewAll.width;
+    PHAssetCollection *assetCollection =  (PHAssetCollection *)self.model.assetsResult[curr];
+    LNPhotoModel *model = [[LNPhotoModel alloc]init];
+    model.photoIdentifier = assetCollection.localIdentifier;
+    model.albumIdentifier = self.model.albumIdentifier;
+    model.assetsResult = self.model.assetsResult[curr];
+    [[LNPhotoSelectManager sharedManager] setSelectPhotoArray:@[model]];
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        [self sureAction];
+    });
+}
+
+- (void)updateblackBackViewInfo{
+    
+    self.blackBackView.currentScroll.zoomScale = 1.0;
+    PHAssetCollection *assetCollection =  (PHAssetCollection *)self.model.assetsResult[_currentItem];
+    LNPhotoModel *model = [[LNPhotoSelectManager sharedManager] modelWithPhotoIdentifier:assetCollection.localIdentifier];
+    if (model) {
+        [self.blackBackView.currentImage setImage:model.image?model.image:[UIImage imageNamed:@"noimage"]];
+    }else{
         weakifyself
-        [[LNAlbumInfoManager  sharedManager] getOriginImageWithAsset:[self.model.assetsResult objectAtIndex:scrollView.contentOffset.x / viewAll.width] completionBlock:^(UIImage *result) {
+        [[LNAlbumInfoManager  sharedManager] getOriginImageWithAsset:[self.model.assetsResult objectAtIndex:_currentItem] completionBlock:^(UIImage *result) {
             strongifyself
             if (result) {
                 [self.blackBackView.currentImage setImage:result];
@@ -229,7 +307,18 @@
             self.blackBackView.hidden = NO;
             self.blackBackView.currentImage.clipsToBounds = YES;
         }];
-        [self updateSelectStatus];
+    }
+    [self updateSelectStatus];
+}
+
+#pragma mark - scrollViewDelegate
+
+-(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
+    if ([scrollView isEqual:_bigImageCollect]) {
+        _currentX = scrollView.contentOffset.x;
+        _currentItem = scrollView.contentOffset.x / viewAll.width;
+         self.blackBackView.frame = CGRectMake(scrollView.contentOffset.x,scrollView.frame.origin.y,scrollView.frame.size.width,scrollView.frame.size.height);
+        [self updateblackBackViewInfo];
     }
 }
 
@@ -281,7 +370,13 @@
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     LNPreViewPhotosCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"myCell" forIndexPath:indexPath];
-    [cell getImageWithAsset:self.model.assetsResult[indexPath.item]];
+    PHAssetCollection *assetCollection =  (PHAssetCollection *)self.model.assetsResult[indexPath.item];
+    LNPhotoModel *model = [[LNPhotoSelectManager sharedManager] modelWithPhotoIdentifier:assetCollection.localIdentifier];
+    if (model) {
+        cell.imageView.image =  model.image;
+    }else{
+        [cell getImageWithAsset:self.model.assetsResult[indexPath.item]];
+    }
     return cell;
 }
 
@@ -305,8 +400,27 @@
     [self updateSelectStatus];
 }
 
-- (void)preViewBottonViewBack{
-    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+- (void)preViewBottonViewFinishSelect{
+    [self sureAction];
+}
+
+
+
+-(void)preViewEditButtonActionWithModel:(LNPhotoModel *)model{
+    if(model.image){
+        LNClipsViewController *vc = [[LNClipsViewController alloc]init];
+        vc.image = [model.image copy];
+        weakifyself
+        [vc setCutFinish:^(UIImage *image) {
+            strongifyself
+            model.image = image;
+            self.blackBackView.currentImage.image = image;
+            [self.bottomView updateInfo];
+            [self.bigImageCollect reloadData];
+        }];
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+  
 }
 
 

@@ -9,10 +9,13 @@
 #import "LNPreViewBottonView.h"
 #import "LNPreViewBottomImageView.h"
 #import "LNSelectPhoto.h"
+#import "LNClipsViewController.h"
+
 
 @interface LNPreViewBottonView()
 @property (nonatomic, strong) UIScrollView *scrollView;
 @property (nonatomic, strong) UIButton  *sureButton;
+@property (nonatomic, strong) UIButton  *editButton;
 @property (nonatomic, strong) NSMutableArray  *imageViewArray;
 
 
@@ -31,9 +34,13 @@
 }
 
 - (void)setUpView{
-    _scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 15,self.frame.size.width -110, 70)];
+    
+    BOOL isCanEdit = [[LNPhotoSelectManager sharedManager] isCanEdit];
+    _scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 15,self.frame.size.width -110 - (isCanEdit?90:0), 70)];
     [_scrollView setUserInteractionEnabled:YES];
     [self addSubview:_scrollView];
+    [self addSubview: self.editButton];
+    [self.editButton setHidden:!isCanEdit];
     [self addSubview:self.sureButton];
     [self updateInfo];
     
@@ -45,11 +52,6 @@
     NSArray *array = [LNPhotoSelectManager sharedManager].selectPhotoArray;
     [_scrollView setContentSize:CGSizeMake(array.count *80, 70)];
     CGFloat offSizeX = _scrollView.contentOffset.x;
-//    for (LNPreViewBottomImageView *view in _scrollView.subviews) {
-//        if ([view isMemberOfClass:[LNPreViewBottomImageView class]]) {
-//            [view removeFromSuperview];
-//        }
-//    }
     
     if (_imageViewArray.count >= array.count) {
         for (int i = 0; i<_imageViewArray.count; i++) {
@@ -100,21 +102,6 @@
             }
         }
     }
-//    for ( int i = 0; i<array.count; i++) {
-//        LNPreViewBottomImageView *view = [[LNPreViewBottomImageView alloc]initWithFrame:CGRectMake(80*i,0, 70, 70)];
-//        BOOL isSelect = NO;
-//        LNPhotoModel *model = array[i];
-//        if([model.photoIdentifier isEqualToString:_photoIdentifier]){
-//                isSelect = YES;
-//        }
-//        view.tag = 1000 + i;
-//        view.isSelect = isSelect;
-//        view.model = array[i];
-//        [view setSelectBlock:^(LNPreViewBottomImageView *view) {
-//
-//        }];
-//        [self.scrollView addSubview:view];
-//    }
     _scrollView.contentOffset =  CGPointMake(offSizeX,0);
     [_sureButton setTitle:[NSString stringWithFormat:@"确定 (%lu/%lu)",(unsigned long)array.count,[[LNPhotoSelectManager sharedManager] maxCount]] forState:UIControlStateNormal];
     if(array.count>0){
@@ -140,18 +127,20 @@
 
 - (void)updateSelectInfo{
     LNPreViewBottomImageView *selectView = nil;
+    BOOL  isHaveSelectImage = NO;
     for (LNPreViewBottomImageView *view in _scrollView.subviews) {
         if ([view isMemberOfClass:[LNPreViewBottomImageView class]]) {
             LNPreViewBottomImageView *imaView = (LNPreViewBottomImageView *)view;
             if ([imaView.model.photoIdentifier isEqualToString:self.photoIdentifier]) {
                 [imaView setIsSelect:YES];
+                isHaveSelectImage = YES;
                 selectView = imaView;
             }else{
                 [imaView setIsSelect:NO];
             }
         }
     }
-    
+    [_editButton setEnabled:isHaveSelectImage];
     if (selectView) {
         NSInteger index = selectView.tag - 1000;
         if(self.scrollView.contentOffset.x>index*80){
@@ -179,21 +168,33 @@
     return _sureButton;
 }
 
+- (UIButton *)editButton{
+    if(!_editButton){
+        _editButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        _editButton.backgroundColor = [UIColor colorWithRed:255/255.0 green:108/255.0 blue:0/255.0 alpha:1/1.0];
+        [_editButton.layer setMasksToBounds:YES];
+        [_editButton.layer setCornerRadius:2];
+        [_editButton setFrame:CGRectMake(self.frame.size.width - 95 - 95, 35, 80, 30)];
+        [_editButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [_editButton setTitleColor:[UIColor colorWithRed:255/255.0 green:200/255.0 blue:0/255.0 alpha:1/1.0] forState:UIControlStateDisabled];
+        [_editButton.titleLabel setFont:[UIFont fontWithName:@"PingFangSC-Regular" size:13]];
+        [_editButton addTarget:self action:@selector(editAction) forControlEvents:UIControlEventTouchUpInside];
+        [_editButton setTitle:@"编辑" forState:UIControlStateNormal];
+    }
+    return _editButton;
+}
+
 - (void)sureAction{
     
-    NSArray *array = [LNPhotoSelectManager sharedManager].selectPhotoArray;
-    NSMutableArray *imageArray = [NSMutableArray array];
-    for (int i = 0; i<array.count; i++) {
-        LNPhotoModel *model = array[i];
-        if (model.image) {
-            [imageArray addObject:model.image];
-        }
+    if (self.delegate &&[self.delegate respondsToSelector:@selector(preViewBottonViewFinishSelect)]) {
+        [self.delegate preViewBottonViewFinishSelect];
     }
-    if ([LNPhotoSelectManager sharedManager].selectPhotosBlock) {
-        [LNPhotoSelectManager sharedManager].selectPhotosBlock(imageArray);
-    }
-    if (self.delegate &&[self.delegate respondsToSelector:@selector(preViewBottonViewBack)]) {
-        [self.delegate preViewBottonViewBack];
+}
+
+- (void)editAction{
+    LNPhotoModel *pmodel = [[LNPhotoSelectManager sharedManager] modelWithPhotoIdentifier:self.photoIdentifier];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(preViewEditButtonActionWithModel:)]) {
+        [self.delegate preViewEditButtonActionWithModel:pmodel];
     }
 }
 

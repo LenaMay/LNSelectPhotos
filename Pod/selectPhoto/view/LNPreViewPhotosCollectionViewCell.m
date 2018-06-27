@@ -25,6 +25,9 @@
         [view removeFromSuperview];
     }
     _imageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, allScreen.width, allScreen.height)];
+    _imageView.contentMode = UIViewContentModeScaleAspectFit;
+    _imageView.clipsToBounds = YES;
+    _imageView.userInteractionEnabled = YES;
     [self.contentView addSubview:_imageView];
 }
 
@@ -41,11 +44,8 @@
             self.imageView.image = result;
         }else{
             self.imageView.image = [UIImage imageNamed:@"noimage"];
-            
         }
-        self.imageView.contentMode = UIViewContentModeScaleAspectFit;
-        self.imageView.clipsToBounds = YES;
-        self.imageView.userInteractionEnabled = YES;
+
     }];
 }
 @end

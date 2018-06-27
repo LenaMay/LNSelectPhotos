@@ -31,7 +31,7 @@
 }
 
 -(void)btnAction{
-    [LNPhotoManager  selectPhotsWithCount:10 type:0 photoArrBlock:^(NSArray *selectPhotoArray) {
+    [LNPhotoManager  selectPhotsWithCount:10 type:LNPhotoManagerTypeCameraCanEdit photoArrBlock:^(NSArray *selectPhotoArray) {
         [self setupView:selectPhotoArray];
     }];
 

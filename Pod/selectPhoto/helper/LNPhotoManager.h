@@ -10,8 +10,11 @@
 #import <Photos/Photos.h>
 #import "LNPhotoSelectManager.h"
 typedef NS_ENUM(NSInteger, LNPhotoManagerType) {
-    LNPhotoManagerTypeAlbumSelectMore = 0,//相册多选
-    LNPhotoManagerTypeAlbumSelectOnly,//相册单选（待完成）
+    LNPhotoManagerTypeAlbumSelectMore = 0,//相册多选不可编辑可预览
+    LNPhotoManagerTypeAlbumSelectMoreCanEdit,//相册可编辑可预览
+    LNPhotoManagerTypeAlbumSelectOnly,//相册单选可预览
+    LNPhotoManagerTypeAlbumSelectOnlyNopre,//相册单选不可预览
+    
     LNPhotoManagerTypeCameraNOEdit,//相机不可编辑
     LNPhotoManagerTypeCameraCanEdit//相机可编辑
 };

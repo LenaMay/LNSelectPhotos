@@ -37,14 +37,17 @@
 
  -(void)judgeType:(LNPhotoManagerType)type{
      LNPhotoSelectManager *manager = [LNPhotoSelectManager sharedManager];
-     if (type == LNPhotoManagerTypeAlbumSelectMore) {
-         manager.isCanEdit = NO;
-         manager.isCanPreView  = YES;
-         manager.isOnly = NO;
-     }
+     manager.isOnly = NO;
+     manager.isCanEdit = NO;
+     manager.isCanPreView  = NO;
      switch (type) {
              
          case LNPhotoManagerTypeAlbumSelectMore:
+             manager.isCanPreView  = YES;
+             [self  loadinfo];
+             break;
+         case LNPhotoManagerTypeAlbumSelectMoreCanEdit:
+             manager.isCanEdit  = YES;
              manager.isCanPreView  = YES;
              [self  loadinfo];
              break;
@@ -54,6 +57,11 @@
              manager.isOnly = YES;
              [self  loadinfo];
 
+             break;
+         case LNPhotoManagerTypeAlbumSelectOnlyNopre:
+             manager.isCanPreView  = YES;
+             manager.isOnly = YES;
+             [self  loadinfo];
              break;
          case LNPhotoManagerTypeCameraNOEdit:
              [self showImagePicker];

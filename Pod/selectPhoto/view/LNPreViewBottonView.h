@@ -15,6 +15,13 @@
 - (void)updateInfo;
 @end
 @protocol LNPreViewBottonViewDelegate <NSObject>
+
+//选中其中一张照片
 - (void)preViewBottonViewImageSelectWithModel:(LNPhotoModel *)model;
-- (void)preViewBottonViewBack;
+
+//选择完成点击确认
+- (void)preViewBottonViewFinishSelect;
+
+//编辑照片
+- (void)preViewEditButtonActionWithModel:(LNPhotoModel *)model;
 @end

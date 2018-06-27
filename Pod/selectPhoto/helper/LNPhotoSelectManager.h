@@ -7,6 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "LNPhotoModel.h"
+
 typedef void (^photoArrBlock)(NSArray  *selectPhotoArray);
 typedef void (^photCamaraBlock)(UIImage  *image);
 
@@ -22,17 +24,13 @@ typedef void (^photCamaraBlock)(UIImage  *image);
 @property (nonatomic, assign)BOOL  isCanEdit;
 @property (nonatomic, assign)BOOL  isCanPreView;
 @property (nonatomic, assign)NSInteger  type;
-
-
 @property(nonatomic,copy) photoArrBlock  selectPhotosBlock;
-
-
-
-
 
 
 /** 获取单例对象 PhotoManager */
 + (instancetype)sharedManager;
+
+- (LNPhotoModel *)modelWithPhotoIdentifier:(NSString *)photoIdentifier;
 //所有数据置空  每一次 调用相册都要将其置空
 - (void)clear;
 @end

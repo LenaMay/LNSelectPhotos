@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3E8C6C9320E213EF0005C127 /* LNClipsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E8C6C9220E213EF0005C127 /* LNClipsViewController.m */; };
+		3E8C6C9620E2673B0005C127 /* UIImage+JPExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E8C6C9420E2673A0005C127 /* UIImage+JPExtension.m */; };
+		3E8C6C9E20E2674C0005C127 /* JPImageresizerConfigure.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E8C6C9920E2674B0005C127 /* JPImageresizerConfigure.m */; };
+		3E8C6C9F20E2674C0005C127 /* JPImageresizerFrameView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E8C6C9A20E2674B0005C127 /* JPImageresizerFrameView.m */; };
+		3E8C6CA020E2674C0005C127 /* JPImageresizerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E8C6C9C20E2674B0005C127 /* JPImageresizerView.m */; };
+		3E8C6CA220E3662D0005C127 /* LN_ic_photo_return@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E8C6CA120E3662D0005C127 /* LN_ic_photo_return@2x.png */; };
+		3E8C6CA420E366330005C127 /* LN_ic_photo_correct@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E8C6CA320E366330005C127 /* LN_ic_photo_correct@2x.png */; };
 		3E8E7B7B20BD7DE80046033F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E8E7B7A20BD7DE80046033F /* AppDelegate.m */; };
 		3E8E7B7E20BD7DE80046033F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E8E7B7D20BD7DE80046033F /* ViewController.m */; };
 		3E8E7B8120BD7DE80046033F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E8E7B7F20BD7DE80046033F /* Main.storyboard */; };
@@ -70,6 +77,19 @@
 /* Begin PBXFileReference section */
 		0A40865B1B4F01916EDE948F /* Pods-selectPhotos.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-selectPhotos.debug.xcconfig"; path = "Pods/Target Support Files/Pods-selectPhotos/Pods-selectPhotos.debug.xcconfig"; sourceTree = "<group>"; };
 		3E08843B20BFFCAD00D8ED00 /* LNSelectPhoto.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LNSelectPhoto.pch; sourceTree = "<group>"; };
+		3E8C6C9120E213EF0005C127 /* LNClipsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LNClipsViewController.h; sourceTree = "<group>"; };
+		3E8C6C9220E213EF0005C127 /* LNClipsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LNClipsViewController.m; sourceTree = "<group>"; };
+		3E8C6C9420E2673A0005C127 /* UIImage+JPExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+JPExtension.m"; sourceTree = "<group>"; };
+		3E8C6C9520E2673B0005C127 /* UIImage+JPExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+JPExtension.h"; sourceTree = "<group>"; };
+		3E8C6C9720E2674B0005C127 /* JPImageresizerTypedef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPImageresizerTypedef.h; sourceTree = "<group>"; };
+		3E8C6C9820E2674B0005C127 /* JPImageresizerConfigure.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPImageresizerConfigure.h; sourceTree = "<group>"; };
+		3E8C6C9920E2674B0005C127 /* JPImageresizerConfigure.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPImageresizerConfigure.m; sourceTree = "<group>"; };
+		3E8C6C9A20E2674B0005C127 /* JPImageresizerFrameView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPImageresizerFrameView.m; sourceTree = "<group>"; };
+		3E8C6C9B20E2674B0005C127 /* JPImageresizerFrameView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPImageresizerFrameView.h; sourceTree = "<group>"; };
+		3E8C6C9C20E2674B0005C127 /* JPImageresizerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPImageresizerView.m; sourceTree = "<group>"; };
+		3E8C6C9D20E2674B0005C127 /* JPImageresizerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPImageresizerView.h; sourceTree = "<group>"; };
+		3E8C6CA120E3662D0005C127 /* LN_ic_photo_return@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LN_ic_photo_return@2x.png"; sourceTree = "<group>"; };
+		3E8C6CA320E366330005C127 /* LN_ic_photo_correct@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LN_ic_photo_correct@2x.png"; sourceTree = "<group>"; };
 		3E8E7B7620BD7DE80046033F /* selectPhotos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = selectPhotos.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E8E7B7920BD7DE80046033F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		3E8E7B7A20BD7DE80046033F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -180,6 +200,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3E8C6C9020E213D20005C127 /* pictureCut */ = {
+			isa = PBXGroup;
+			children = (
+				3E8C6C9820E2674B0005C127 /* JPImageresizerConfigure.h */,
+				3E8C6C9920E2674B0005C127 /* JPImageresizerConfigure.m */,
+				3E8C6C9B20E2674B0005C127 /* JPImageresizerFrameView.h */,
+				3E8C6C9A20E2674B0005C127 /* JPImageresizerFrameView.m */,
+				3E8C6C9720E2674B0005C127 /* JPImageresizerTypedef.h */,
+				3E8C6C9D20E2674B0005C127 /* JPImageresizerView.h */,
+				3E8C6C9C20E2674B0005C127 /* JPImageresizerView.m */,
+				3E8C6C9520E2673B0005C127 /* UIImage+JPExtension.h */,
+				3E8C6C9420E2673A0005C127 /* UIImage+JPExtension.m */,
+				3E8C6C9120E213EF0005C127 /* LNClipsViewController.h */,
+				3E8C6C9220E213EF0005C127 /* LNClipsViewController.m */,
+			);
+			path = pictureCut;
+			sourceTree = "<group>";
+		};
 		3E8E7B6D20BD7DE80046033F = {
 			isa = PBXGroup;
 			children = (
@@ -243,6 +281,7 @@
 		3E90321A20D8D3BD008130D9 /* Pod */ = {
 			isa = PBXGroup;
 			children = (
+				3E8C6C9020E213D20005C127 /* pictureCut */,
 				3E90321B20D8D3BD008130D9 /* pictureBrowser */,
 				3E90323820D8D3BE008130D9 /* selectPhoto */,
 			);
@@ -305,6 +344,8 @@
 				3E90323C20D8D3BE008130D9 /* LN_photoBack@2x.png */,
 				3E90323D20D8D3BE008130D9 /* LN_ic_check@2x.png */,
 				3E90323E20D8D3BE008130D9 /* LN_news_back@2x.png */,
+				3E8C6CA120E3662D0005C127 /* LN_ic_photo_return@2x.png */,
+				3E8C6CA320E366330005C127 /* LN_ic_photo_correct@2x.png */,
 				3E90323F20D8D3BE008130D9 /* noimage.png */,
 			);
 			path = source;
@@ -357,10 +398,10 @@
 				3E90325B20D8D3BE008130D9 /* LNPhotoManager.h */,
 				3E90325820D8D3BE008130D9 /* LNPhotoManager.m */,
 				3E90325920D8D3BE008130D9 /* LNAlbumInfoManager.h */,
-				3E90325A20D8D3BE008130D9 /* LNPhotoSelectManager.h */,
 				3E90325C20D8D3BE008130D9 /* LNAlbumInfoManager.m */,
-				3E90325D20D8D3BE008130D9 /* LNSelectPhoto.h */,
+				3E90325A20D8D3BE008130D9 /* LNPhotoSelectManager.h */,
 				3E90325E20D8D3BE008130D9 /* LNPhotoSelectManager.m */,
+				3E90325D20D8D3BE008130D9 /* LNSelectPhoto.h */,
 			);
 			path = helper;
 			sourceTree = "<group>";
@@ -500,7 +541,9 @@
 			files = (
 				3E90326D20D8D3BE008130D9 /* LN_photoBack@2x.png in Resources */,
 				3E90326C20D8D3BE008130D9 /* LN_ic_unchecked@2x.png in Resources */,
+				3E8C6CA420E366330005C127 /* LN_ic_photo_correct@2x.png in Resources */,
 				3E8E7B8620BD7DE80046033F /* LaunchScreen.storyboard in Resources */,
+				3E8C6CA220E3662D0005C127 /* LN_ic_photo_return@2x.png in Resources */,
 				3E90326B20D8D3BE008130D9 /* ic_next@2x.png in Resources */,
 				3E8E7B8320BD7DE80046033F /* Assets.xcassets in Resources */,
 				3E90327020D8D3BE008130D9 /* noimage.png in Resources */,
@@ -556,11 +599,14 @@
 				3E90325F20D8D3BE008130D9 /* BJNTapDetectingImageView.m in Sources */,
 				3E90327320D8D3BE008130D9 /* LNPhotoAlbumListViewController.m in Sources */,
 				3E90326820D8D3BE008130D9 /* BJNZoomingScrollView.m in Sources */,
+				3E8C6C9320E213EF0005C127 /* LNClipsViewController.m in Sources */,
 				3E90326620D8D3BE008130D9 /* BJNDACircularProgressView.m in Sources */,
 				3E90327620D8D3BE008130D9 /* LNPreViewBottonView.m in Sources */,
 				3E90327120D8D3BE008130D9 /* LNSelectPhotosPreviewViewController.m in Sources */,
 				3E90326020D8D3BE008130D9 /* BJNDALabeledCircularProgressView.m in Sources */,
+				3E8C6CA020E2674C0005C127 /* JPImageresizerView.m in Sources */,
 				3E8E7B7E20BD7DE80046033F /* ViewController.m in Sources */,
+				3E8C6C9F20E2674C0005C127 /* JPImageresizerFrameView.m in Sources */,
 				3EAB416E20D35B6C0005F4E0 /* LNphotoBrowserVC.m in Sources */,
 				3E90327220D8D3BE008130D9 /* LNPhotoListViewController.m in Sources */,
 				3E90326720D8D3BE008130D9 /* BJNTapDetectingView.m in Sources */,
@@ -574,6 +620,8 @@
 				3E90326920D8D3BE008130D9 /* BJNGridViewController.m in Sources */,
 				3E90326A20D8D3BE008130D9 /* BJNPictureZoomAnimator.m in Sources */,
 				3E90327C20D8D3BE008130D9 /* LNAlbumInfoManager.m in Sources */,
+				3E8C6C9E20E2674C0005C127 /* JPImageresizerConfigure.m in Sources */,
+				3E8C6C9620E2673B0005C127 /* UIImage+JPExtension.m in Sources */,
 				3E90326120D8D3BE008130D9 /* BJNPictureBrowserCollectionViewCell.m in Sources */,
 				3E90326520D8D3BE008130D9 /* BJNPictueBrowser.m in Sources */,
 				3E90326220D8D3BE008130D9 /* BJNPicture.m in Sources */,
